@@ -1,0 +1,15 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+}
+
+.content div{
+    padding: 15px;
+}
+
+.action{
+    border: 1px solid blue;
+    cursor: pointer;
+    margin: 12px;;
+}
