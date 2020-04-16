@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="./stylesinvers.css"> 
 </head>
 <body>
+ 
   
-HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Player LIST:
 
 <div id="player-container" ></div>
 
@@ -16,5 +17,26 @@ HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   <script src="../../src/howler.core.js"></script>
   <script src="./siriwave.js"></script>
   <script src="./playerinvers.js"></script>
+  <script >
+    const listPlay = [
+  {
+    title: "Rave Digger",
+    file: "rave_digger",
+    howl: null,
+  },
+  {
+    title: "80s Vibe",
+    file: "80s_vibe",
+    howl: null,
+  },
+  {
+    title: "Running Out",
+    file: "running_out",
+    howl: null,
+  },
+];
+    playerlist('player-container',listPlay)
+  </script>
+  
 </body>
 </html>
