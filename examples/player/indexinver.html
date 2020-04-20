@@ -12,6 +12,7 @@
 Player LIST:
 
 <div id="player-container" ></div>
+<div id="player-info"></div>
 
   <!-- Scripts -->
   <script src="../../src/howler.core.js"></script>
@@ -21,24 +22,48 @@ Player LIST:
     const listPlay = [
   {
     title: "Rave Digger",
-  //  file: "rave_digger",
-  file: "http://127.0.0.1:8080/rave_digger.mp3",
+    image:'http://127.0.0.1:8080/image1.jpg',
+    file: "http://127.0.0.1:8080/rave_digger.mp3",
     howl: null,
   },
   {
     title: "80s Vibe",
-    //file: "80s_vibe",
+    image:'http://127.0.0.1:8080/image2.jpg',
+    duration:0,
     file: "http://127.0.0.1:8080/80s_vibe.mp3",
     howl: null,
   },
   {
     title: "Running Out",
-    //file: "running_out",
+    image:'http://127.0.0.1:8080/image3.jpg',
     file: "http://127.0.0.1:8080/running_out.mp3",
     howl: null,
   },
+  {
+    title: "Rave Digger",
+    image:'http://127.0.0.1:8080/image4.jpg',
+    file: "http://127.0.0.1:8080/rave_digger.mp3",
+    howl: null,
+  },
+  {
+    title: "80s Vibe",
+    image:'http://127.0.0.1:8080/image5.jpg',
+    file: "http://127.0.0.1:8080/80s_vibe.mp3",
+    howl: null,
+  },
+  {
+    title: "Running Out",
+    image:'http://127.0.0.1:8080/image6.jpg',
+    file: "http://127.0.0.1:8080/running_out.mp3",
+    howl: null,
+  }
 ];
-    playerlist('player-container',listPlay)
+    playerlist('player-container',listPlay,function(data){
+  //play one audio callback
+      const playerCont = document.getElementById('player-info');
+      playerCont.textContent='Imagen '+ data.image +' Titulo '+ data.title + ' Tiempo '+ data.duration
+
+    })
   </script>
   
 </body>

@@ -23,7 +23,7 @@ function getTemplate(data) {
  * Create elment DOM for sound File
  * @param {*} data 
  */
-function createElementItemPlayer(data) {
+function createElementItemPlayer(data, playCall) {
   const divItem = document.createElement("div");
   divItem.innerHTML = getTemplate(data);
   const play = divItem.querySelector(".playaction");
@@ -41,6 +41,7 @@ function createElementItemPlayer(data) {
     onload: function () {
       const timeplay = data.howl.duration();
       time.textContent = timeplay;
+      data.duration= timeplay;
     },
 
     onend: function () {
@@ -52,6 +53,7 @@ function createElementItemPlayer(data) {
   play.addEventListener("click", function () {
     //alert('pulsado en'+data.title)
     data.howl.play();
+    playCall(data)
     play.style.display = "none";
     stop.style.display = "block";
   });
@@ -72,11 +74,11 @@ function createElementItemPlayer(data) {
  * @param {*} idContainer 
  * @param {*} listPlay 
  */
-function playerlist(idContainer,listPlay){
+function playerlist(idContainer,listPlay,playCall){
   const playerCont = document.getElementById(idContainer);
 
   listPlay.forEach(function (data) {
-    playerCont.appendChild(createElementItemPlayer(data));
+    playerCont.appendChild(createElementItemPlayer(data,playCall));
   });
   
 }   
