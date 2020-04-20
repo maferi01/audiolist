@@ -1,5 +1,7 @@
 # Audio Player ([Live Demo](https://howlerjs.com/#player))
 
+SCRIPT - INVERSIS
+
 ![Audio Player](https://s3.amazonaws.com/howler.js/screenshot-player.jpg "Player Screenshot")
 
 ## Description
