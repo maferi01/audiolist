@@ -23,7 +23,7 @@ function getTemplate(data) {
  * Create elment DOM for sound File
  * @param {*} data 
  */
-function createElementItemPlayer(data, playCall) {
+function createElementItemPlayer(data, playCall,playerData) {
   const divItem = document.createElement("div");
   divItem.innerHTML = getTemplate(data);
   const play = divItem.querySelector(".playaction");
@@ -37,6 +37,8 @@ function createElementItemPlayer(data, playCall) {
    html5: true, // Force to HTML5 so that the audio can stream in (best for large files).
     onplay: function () {
       // Display the duration.
+      play.style.display = "none";
+      stop.style.display = "block";
     },
     onload: function () {
       const timeplay = data.howl.duration();
@@ -48,21 +50,25 @@ function createElementItemPlayer(data, playCall) {
       play.style.display = "block";
       stop.style.display = "none";
     },
+
+    onstop: function () {
+      play.style.display = "block";
+      stop.style.display = "none";
+    },
   });
 
   play.addEventListener("click", function () {
-    //alert('pulsado en'+data.title)
+    if(playerData.howCurrent){
+      playerData.howCurrent.stop();
+    }
     data.howl.play();
+    playerData.howCurrent=data.howl;
     playCall(data)
-    play.style.display = "none";
-    stop.style.display = "block";
+    
   });
 
   stop.addEventListener("click", function () {
-    //alert('pulsado en'+data.title)
     data.howl.stop();
-    play.style.display = "block";
-    stop.style.display = "none";
   });
 
   return divItem;
@@ -75,10 +81,12 @@ function createElementItemPlayer(data, playCall) {
  * @param {*} listPlay 
  */
 function playerlist(idContainer,listPlay,playCall){
+  const playerData={howCurrent:null};
+
   const playerCont = document.getElementById(idContainer);
 
   listPlay.forEach(function (data) {
-    playerCont.appendChild(createElementItemPlayer(data,playCall));
+    playerCont.appendChild(createElementItemPlayer(data,playCall,playerData));
   });
   
 }   
