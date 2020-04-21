@@ -13,6 +13,7 @@ Player LIST:
 
 <div id="player-container" ></div>
 <div id="player-info"></div>
+<div id="player-container2" ></div>
 
   <!-- Scripts -->
   <script src="../../src/howler.core.js"></script>
@@ -57,6 +58,24 @@ Player LIST:
     howl: null,
   }
 ];
+const listPlay2 = [
+  {
+    title: "Rave Digger",
+    image:'http://127.0.0.1:8080/image1.jpg',
+    file: "http://127.0.0.1:8080/rave_digger.mp3",
+    howl: null,
+  },
+  {
+    title: "80s Vibe",
+    image:'http://127.0.0.1:8080/image2.jpg',
+    duration:0,
+    file: "http://127.0.0.1:8080/80s_vibe.mp3",
+    howl: null,
+  }
+  
+];
+
+    playerlist('player-container2',listPlay2,function(){})
     playerlist('player-container',listPlay,function(data){
   //play one audio callback
       const playerCont = document.getElementById('player-info');
