@@ -39,11 +39,19 @@ function createElementItemPlayer(data, playCall,playerData) {
       // Display the duration.
       play.style.display = "none";
       stop.style.display = "block";
+
+      // add extra operations
+      divItem.classList.add("active");
+
     },
     onload: function () {
       const timeplay = data.howl.duration();
-      time.textContent = timeplay;
-      data.duration= timeplay;
+      if(timeplay){
+        const timeFormat= (timeplay/60).toPrecision(3)
+        time.textContent = timeFormat;
+        data.duration= timeFormat;
+      }
+      
     },
 
     onend: function () {
@@ -54,6 +62,9 @@ function createElementItemPlayer(data, playCall,playerData) {
     onstop: function () {
       play.style.display = "block";
       stop.style.display = "none";
+
+      // add extra operations
+      divItem.classList.remove("active");
     },
   });
 
